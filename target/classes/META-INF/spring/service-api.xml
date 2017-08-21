@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  http://www.springframework.org/schema/beans/spring-beans.xsd    
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<beans profile="dev">
+		<dubbo:registry address="${dubbo.registry.dev}" file="${dubbo.registry.file}" />
+	</beans>
+	<beans profile="sit">
+		<dubbo:registry address="${dubbo.registry.sit}" file="${dubbo.registry.file}" />
+	</beans>
+	<beans profile="mo">
+		<dubbo:registry address="${dubbo.registry.mo}" file="${dubbo.registry.file}" />
+	</beans>
+	<beans profile="prod">
+		<dubbo:registry address="${dubbo.registry.prod}" file="${dubbo.registry.file}" />
+	</beans>
+
+	<beans default-lazy-init="true">
+		<dubbo:application name="${env.appName}" />
+
+		<dubbo:reference id="demoApi" interface="com.test.api.DemoApi"
+			check="false" version="1.0" />
+	</beans>
+</beans>

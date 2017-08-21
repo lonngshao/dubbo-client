@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+
+	<beans>
+		<bean class="org.lsn.dubbo.client.config.EnableDubboClientsConfiguration" />
+		
+		<bean id="dubboServiceFactory" class="org.lsn.dubbo.client.beans.DubboServiceFactory">
+			<property name="apiConfigLocation" value="classpath:META-INF/spring/service-api.xml" />
+			<property name="dubboConfigLocation" value="classpath:META-INF/spring/dubbo.properties" />
+		</bean>
+		
+	</beans>
+
+</beans>
